@@ -1,12 +1,5 @@
 FROM python:3.8-alpine
 
-RUN apk update && apk upgrade && apk add git
-RUN git init
-RUN git remote add origin git@github.com:owner/backend-repo.git
-RUN git fetch
-RUN git checkout main
-RUN git pull
-
 ENV PATH="/scripts:${PATH}"
 
 COPY ./requirements.txt /requirements.txt
