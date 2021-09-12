@@ -1,6 +1,6 @@
 FROM python:3.8-alpine
 
-ENV PATH="/scripts:${PATH}"
+LABEL maintainer="dev@ivanne.de"
 
 COPY ./requirements.txt /requirements.txt
 
@@ -8,13 +8,9 @@ RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
 RUN pip install -r /requirements.txt
 RUN apk del .tmp
 
-RUN mkdir /src
-COPY ./src src
-WORKDIR /src
+COPY . ./
 
-COPY ./scripts/ /scripts/
-
-RUN chmod +x /scripts/*
+RUN chmod +x *.sh
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
