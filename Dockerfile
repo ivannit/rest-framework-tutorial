@@ -13,5 +13,10 @@ COPY . ./
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
+RUN chmod -R 755 /vol/web
+
+#RUN adduser -D dockeruser
+#RUN chown -R dockeruser:dockeruser /vol
+#USER dockeruser
 
 CMD ["entrypoint.sh"]
